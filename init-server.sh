@@ -38,5 +38,7 @@ function main() {
   # Start server
   FEXBash "./FactoryServer.sh $EXTRA_PARAMS"
 }
-sleep 300
+
 main
+
+sleep infinity
