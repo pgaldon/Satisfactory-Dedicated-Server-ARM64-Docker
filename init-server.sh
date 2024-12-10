@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function installServer() {
-  FEXBash './steamcmd.sh +@sSteamCmdForcePlatformBitness 64 +force_install_dir "/satisfactory-config" +login anonymous +app_update 1690800 -beta experimental validate +quit'
+  FEXBash './steamcmd.sh +@sSteamCmdForcePlatformBitness 64 +force_install_dir "/config" +login anonymous +app_update 1690800 -beta experimental validate +quit'
 }
 
 function main() {
   # Check if we have proper read/write permissions to /satisfactory
   if [ ! -r "/satisfactory-config" ] || [ ! -w "/satisfactory-config" ]; then
-    echo 'ERROR: I do not have read/write permissions to /satisfactory-config! Please run "chown -R 1000:1000 satisfactory/" on host machine, then try again.'
+    echo 'ERROR: I do not have read/write permissions to /config! Please run "chown -R 1000:1000 config/" on host machine, then try again.'
     exit 1
   fi
 
@@ -16,7 +16,7 @@ function main() {
   FEXBash './steamcmd.sh +quit'
 
   # Check if the server is installed
-  if [ ! -f "/satisfactory/FactoryServer.sh" ]; then
+  if [ ! -f "/config/FactoryServer.sh" ]; then
     echo 'Server not found! Installing...'
     installServer
   fi
@@ -33,7 +33,7 @@ function main() {
   echo 'Starting server...'
 
   # Go to /satisfactory
-  cd /satisfactory
+  cd /config
 
   # Start server
   FEXBash "./FactoryServer.sh $EXTRA_PARAMS"
