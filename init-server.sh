@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function installServer() {
-  FEXBash './steamcmd.sh +@sSteamCmdForcePlatformBitness 64 +force_install_dir "/satisfactory" +login anonymous +app_update 1690800 -beta experimental validate +quit'
+  FEXBash './steamcmd.sh +@sSteamCmdForcePlatformBitness 64 +force_install_dir "/satisfactory-config" +login anonymous +app_update 1690800 -beta experimental validate +quit'
 }
 
 function main() {
   # Check if we have proper read/write permissions to /satisfactory
-  if [ ! -r "/satisfactory" ] || [ ! -w "/satisfactory" ]; then
-    echo 'ERROR: I do not have read/write permissions to /satisfactory! Please run "chown -R 1000:1000 satisfactory/" on host machine, then try again.'
+  if [ ! -r "/satisfactory-config" ] || [ ! -w "/satisfactory-config" ]; then
+    echo 'ERROR: I do not have read/write permissions to /satisfactory-config! Please run "chown -R 1000:1000 satisfactory/" on host machine, then try again.'
     exit 1
   fi
 
