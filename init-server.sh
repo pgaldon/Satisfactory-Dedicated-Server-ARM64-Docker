@@ -6,7 +6,7 @@ function installServer() {
 
 function main() {
   # Check if we have proper read/write permissions to /satisfactory
-  if [ ! -r "/satisfactory-config" ] || [ ! -w "/satisfactory-config" ]; then
+  if [ ! -r "/config" ] || [ ! -w "/config" ]; then
     echo 'ERROR: I do not have read/write permissions to /config! Please run "chown -R 1000:1000 config/" on host machine, then try again.'
     exit 1
   fi
@@ -38,5 +38,5 @@ function main() {
   # Start server
   FEXBash "./FactoryServer.sh $EXTRA_PARAMS"
 }
-
+sleep 300
 main
